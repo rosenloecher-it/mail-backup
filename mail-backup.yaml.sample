@@ -1,0 +1,25 @@
+# log_file:           "./mail-backup.log"
+# log_level:          "debug"  # debug, info, warning, error
+
+imap_host:          "your.host"
+imap_username:      "your.email"
+imap_password:      "your.password"
+
+imap_folders:
+  # there is a good change, that these folder settings match your needs.
+  # but in case you need to adapt the folder names and are not sure about: start the app and watch the output for "found mail folders".
+
+  - folder_name:    "INBOX"
+    path:           "./downloaded/{YEAR}-{MONTH}/{YEAR}{MONTH}{DAY}-{HOUR}{MINUTE}-IN-{FROM}-{SUBJECT}-{UID}.eml"
+    # last_days:    7  # only download emals from the last x days
+    when_exists:    "compare"  # skip, overwrite, compare
+
+  - folder_name:    "Sent"
+    path:           "./downloaded/{YEAR}-{MONTH}/{YEAR}{MONTH}{DAY}-{HOUR}{MINUTE}-OUT-{TO1}-{SUBJECT}-{UID}.eml"
+    # last_days:    7  # only download emals from the last x days
+    when_exists:    "compare"  # skip, overwrite, compare
+
+  - folder_name:    "Sent Items"
+    path:           "./downloaded/{YEAR}-{MONTH}/{YEAR}{MONTH}{DAY}-{HOUR}{MINUTE}-OUT-{TO1}-{SUBJECT}-{UID}.eml"
+    # last_days:    7  # only download emals from the last x days
+    when_exists:    "compare"  # skip, overwrite, compare
