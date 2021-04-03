@@ -173,7 +173,7 @@ class Runner:
                 _logger.debug("%sskip existing file (%s).", folder_info, mail_path)
                 self._count_skipped += 1
             else:  # folder_config.exists_method == ExistsMethod.COMPARE:
-                new_mail_path = self.find_existing_file_or_new_mail_path(mail, mail_path)
+                new_mail_path = self.find_existing_file_or_new_mail_path(mail, mail_path, folder_config)
                 if new_mail_path:
                     mail_path = new_mail_path
                     do_write = True
@@ -189,14 +189,19 @@ class Runner:
             self._count_saved += 1
 
     @classmethod
-    def find_existing_file_or_new_mail_path(cls, mail, orig_mail_path) -> str:
+    def find_existing_file_or_new_mail_path(cls, mail, orig_mail_path, folder_config: FolderConfig = None) -> str:
         """
         :param MailMessageExt mail:
         :param str mail_path:
+        :param Optional[FolderConfig] folder_config: only for logging folder info
         :return: new path to write or None when should not be written
         """
         if not os.path.isfile(orig_mail_path):
             return orig_mail_path
+
+        folder_info = ""
+        if folder_config:
+            folder_info = "folder '{}' - ".format(folder_config.name)
 
         loop = 0
 
@@ -215,9 +220,10 @@ class Runner:
 
             if compare_data == mail.raw_data:
                 if orig_mail_path == new_mail_path:
-                    _logger.debug("skip existing mail (%s).", orig_mail_path)
+                    _logger.debug("%sskip existing mail (%s).", folder_info, orig_mail_path)
                 else:
-                    _logger.debug("skip existing mail (expected: %s, found as: %s).", orig_mail_path, new_mail_path)
+                    _logger.debug("%sskip existing mail (expected: %s, found as: %s).",
+                                  folder_info, orig_mail_path, new_mail_path)
                 return None
 
             loop += 1
