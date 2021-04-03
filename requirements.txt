@@ -1,0 +1,4 @@
+imap-tools == 0.39
+pyyaml == 5.4
+unidecode == 1.2.0
+
