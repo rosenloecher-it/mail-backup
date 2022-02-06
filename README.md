@@ -71,7 +71,7 @@ The handling of already existing mails files can be configured. Just set `when_e
 - `skip`: Skip the email backup if a file with the proposed name already exists. 
 - `overwrite`: Overwrite the email backup if a file with the proposed name already exists.
 - `compare`: Even by using the `UID`, there is no guarantee that different emails get different file names, so emails could get overwritten. 
-  In `compare` mode existing files gets compared with downloaded email content and written with an postfixed path ("mail.eml" => "mail.2.eml"). 
+  In `compare` mode existing files gets compared with downloaded email content and written with a postfixed path ("mail.eml" => "mail.2.eml"). 
 
 With `last_days` in `imap_folders` you can limit the backup to the most recent emails (see [mail-backup.yaml.sample](./mail-backup.yaml.sample)).
 

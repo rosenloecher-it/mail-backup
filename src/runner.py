@@ -6,7 +6,7 @@ import os
 import signal
 import socket
 from enum import Enum
-from typing import List
+from typing import List, Optional
 
 from imap_tools import MailBox, OR
 
@@ -55,7 +55,7 @@ class FolderConfig:
         self.name = name
         self.path = ""
         self.file_pattern = ""
-        self.last_days = None  # type: int  # "None" means all messages
+        self.last_days: Optional[int] = None  # "None" means all messages
         self.exists_method = ExistsMethod.COMPARE
 
     def __str__(self):
@@ -123,7 +123,7 @@ class Runner:
             _logger.info("logged in (%s@%s)", username, self._host_info)
 
             folders = mailbox.folder.list()
-            folders_names = [f["name"] for f in folders]
+            folders_names = [f.name for f in folders]
             _logger.info("found mail folders = %s", folders_names)
 
             for folder_config in self._folder_configs:
@@ -189,10 +189,10 @@ class Runner:
             self._count_saved += 1
 
     @classmethod
-    def find_existing_file_or_new_mail_path(cls, mail, orig_mail_path, folder_config: FolderConfig = None) -> str:
+    def find_existing_file_or_new_mail_path(cls, mail, orig_mail_path, folder_config: FolderConfig = None) -> Optional[str]:
         """
         :param MailMessageExt mail:
-        :param str mail_path:
+        :param str orig_mail_path:
         :param Optional[FolderConfig] folder_config: only for logging folder info
         :return: new path to write or None when should not be written
         """
