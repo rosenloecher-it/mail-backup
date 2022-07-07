@@ -35,13 +35,13 @@ def init_logging(config):
         handler.setFormatter(formatter)
         handlers.append(handler)
 
-    format = format_with_ts if log_file else format_simple
+    format_ = format_with_ts if log_file else format_simple
 
     if print_console or not log_file:
         handlers.append(logging.StreamHandler(sys.stdout))
 
     logging.basicConfig(
-        format=format,
+        format=format_,
         level=log_level,
         handlers=handlers
     )

@@ -235,11 +235,11 @@ class Runner:
     @classmethod
     def parse_folder_configs(cls, config):
 
-        def get_value(source, key, error_message):
+        def get_value(source, inner_key, inner_error_message):
             try:
-                return source[key]
+                return source[inner_key]
             except KeyError:
-                raise MessageException(error_message)
+                raise MessageException(inner_error_message)
 
         key = ConfigKey.IMAP_FOLDERS.value
         configs = get_value(config, key, "no imap folder configuration found ('{}')!".format(key))

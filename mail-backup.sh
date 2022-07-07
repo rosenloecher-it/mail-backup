@@ -2,7 +2,7 @@
 
 export PYTHONUNBUFFERED=1
 
-# change into script dir to use relative pathes
+# change into script dir to use relative path's
 SCRIPT_PATH=$(readlink -f $0)
 SCRIPT_DIR=$(dirname "$SCRIPT_PATH")
 SCRIPT_NAME=$(basename $0)

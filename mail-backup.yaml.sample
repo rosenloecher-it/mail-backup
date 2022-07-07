@@ -11,7 +11,7 @@ imap_folders:
 
   - folder_name:    "INBOX"
     path:           "./downloaded/{YEAR}-{MONTH}/{YEAR}{MONTH}{DAY}-{HOUR}{MINUTE}-IN-{FROM}-{SUBJECT}-{UID}.eml"
-    # last_days:    7  # only download emals from the last x days
+    # last_days:    7  # only download emails from the last x days
     when_exists:    "compare"  # skip, overwrite, compare
 
   - folder_name:    "Sent"

@@ -87,11 +87,11 @@ class NamingUtils:
         return value
 
     @classmethod
-    def prepare_int(cls, input: int, digits: int) -> str:
-        if input is None:
+    def prepare_int(cls, value: int, digits: int) -> str:
+        if value is None:
             return ""
 
-        output = str(input)
+        output = str(value)
         while len(output) < digits:
             output = "0" + output
 
