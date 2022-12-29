@@ -37,7 +37,7 @@ source ./venv/bin/activate
 python --version
 
 # install required packages
-pip install -r requirements.txt
+pip install --upgrade -r requirements.txt
 ```
 
 ### Configuration

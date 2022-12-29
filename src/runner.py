@@ -244,7 +244,7 @@ class Runner:
         key = ConfigKey.IMAP_FOLDERS.value
         configs = get_value(config, key, "no imap folder configuration found ('{}')!".format(key))
 
-        folder_configs = []  # type: List[FolderConfig]
+        folder_configs: List[FolderConfig] = []
 
         for config in configs:
             folder_name = config.get("folder_name")
