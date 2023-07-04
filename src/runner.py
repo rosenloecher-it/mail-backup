@@ -142,7 +142,7 @@ class Runner:
                     query_args = [OR(date_gte=since)]
 
                 try:
-                    for mail in mailbox.fetch(*query_args):
+                    for mail in mailbox.fetch(*query_args, mark_seen=False):
                         self.handle_mail(mail, folder_config)
                         if self._shutdown:
                             break
