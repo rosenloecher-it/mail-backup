@@ -24,20 +24,23 @@ Tipp: You may search your emails with a desktop search app, like [Recoll](https:
 
 ### Prepare python environment
 
+Prerequisites:
+```bash
+sudo apt-get install python3-dev python3-pip python3-venv python3-wheel -y
+```
+
 ```bash
 git clone https://github.com/rosenloecher-it/mail-backup
 
 cd mail-backup
-virtualenv -p /usr/bin/python3 venv
+python3 -m venv venv
 
 # activate venv
 source ./venv/bin/activate
 
-# check python version >= 3.8
-python --version
-
 # install required packages
 pip install --upgrade -r requirements.txt
+# or: pip install --upgrade -r requirements-dev.txt
 ```
 
 ### Configuration
